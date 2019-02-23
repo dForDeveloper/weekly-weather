@@ -51,3 +51,14 @@ describe('setError', () => {
     expect(result).toEqual(expected);
   });
 });
+
+describe('toggleLoading', () => {
+  it('should return and action of type TOGGLE_LOADING with isLoading', () => {
+    const expected = {
+      type: 'TOGGLE_LOADING',
+      isLoading: true
+    }
+    const result = actions.toggleLoading(true);
+    expect(result).toEqual(expected);
+  });
+});

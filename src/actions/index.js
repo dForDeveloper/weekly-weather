@@ -17,4 +17,9 @@ export const setWeather = (weather) => ({
 export const setError = (message) => ({
   type: 'SET_ERROR',
   message
-})
+});
+
+export const toggleLoading = (bool) => ({
+  type: 'TOGGLE_LOADING',
+  isLoading: bool
+});
