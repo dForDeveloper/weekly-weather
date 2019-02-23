@@ -11,19 +11,23 @@ export class App extends Component {
   }
 
   render() {
-    const { userLocation, weather, location, error } = this.props;
+    const { userLocation, weather, location, error, isLoading } = this.props;
     const { city } = userLocation;
     const redirectPath = city.replace(/\W/g, '-');
     const shouldRedirect = !location.pathname.includes(redirectPath) && city;
     return (
       <div className="App">
         <Search />
-        {shouldRedirect && <Redirect to={redirectPath} />}
-        {weather.currently && !error &&
-          <h1>
-            Temperature in {city}: {parseInt(weather.currently.temperature)}
-          </h1>}
-        {error && <h1>No results found</h1>}
+        {!isLoading && 
+          <div>
+            {shouldRedirect && <Redirect to={redirectPath} />}
+            {weather.currently && !error &&
+              <h1>
+                Temperature in {city}: {parseInt(weather.currently.temperature)}
+              </h1>}
+            {error && <h1>No results found</h1>}
+          </div>}
+        {isLoading && <h1>Loading...</h1>}
       </div>
     );
   }
@@ -32,7 +36,8 @@ export class App extends Component {
 export const mapStateToProps = (state) => ({
   userLocation: state.location,
   weather: state.weather,
-  error: state.error
+  error: state.error,
+  isLoading: state.isLoading
 });
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -45,5 +50,6 @@ App.propTypes = {
   userLocation: PropTypes.object,
   weather: PropTypes.object,
   error: PropTypes.string,
+  isLoading: PropTypes.bool,
   getUserIP: PropTypes.func,
 }

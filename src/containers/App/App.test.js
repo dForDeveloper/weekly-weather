@@ -14,7 +14,7 @@ describe('App', () => {
     userLocation: { 
       latitude: 0,
       longitude: 0,
-      city: 'Denver, CO'
+      city: ''
     },
     weather: {
       currently: { temperature: 39 }
