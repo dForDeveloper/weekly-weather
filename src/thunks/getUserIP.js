@@ -1,11 +1,12 @@
 import { fetchData } from '../utils/api';
-import { setCoordinates, setError } from '../actions';
+import { setCoordinates, setError, toggleLoading } from '../actions';
 import { reverseGeocode } from '../thunks/reverseGeocode';
 import { getWeather } from '../thunks/getWeather';
 
 export const getUserIP = () => {
   return async (dispatch) => {
-    try{ 
+    dispatch(toggleLoading(true));
+    try{
       const url = 'http://ip-api.com/json';
       const { lat: latitude, lon: longitude } = await fetchData(url);
       dispatch(setCoordinates({ latitude, longitude }));
@@ -14,5 +15,6 @@ export const getUserIP = () => {
     } catch (error) {
       dispatch(setError(error.message));
     }
+    dispatch(toggleLoading(false));
   }
 }

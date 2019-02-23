@@ -1,9 +1,10 @@
 import { fetchData } from '../utils/api';
-import { setCoordinates, setCity, setError } from '../actions';
+import { setCoordinates, setCity, setError, toggleLoading } from '../actions';
 import { getWeather } from '../thunks/getWeather';
 
 export const forwardGeocode = (query) => {
   return async (dispatch) => {
+    dispatch(toggleLoading(true));
     try {
       query = query.replace(/\s/g, '+');
       query = query.replace(/,/g, '%2C');
@@ -18,5 +19,6 @@ export const forwardGeocode = (query) => {
     } catch (error) {
       dispatch(setError(error.message))
     }
+    dispatch(toggleLoading(false));
   }
 }
