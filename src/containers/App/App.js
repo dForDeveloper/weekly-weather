@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Search from '../Search/Search';
 import { fetchData } from '../../utils/api';
 import { setCoordinates, setCity, setWeather } from '../../actions';
+import { reverseGeocode } from '../../thunks/reverseGeocode';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
@@ -26,6 +27,7 @@ export class App extends Component {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
         this.props.setCoordinates({ latitude, longitude });
+        this.props.reverseGeocode({ latitude, longitude });
         this.getWeather();
       },
         () => this.getIP()
@@ -36,9 +38,9 @@ export class App extends Component {
   }
 
   getIP = async () => {
-    const response = await fetchData('http://ip-api.com/json');
-    const { lat: latitude, lon: longitude } = await response.json();
+    const { lat: latitude, lon: longitude } = await fetchData('http://ip-api.com/json');
     this.props.setCoordinates({ latitude, longitude });
+    this.props.reverseGeocode({ latitude, longitude });
     this.getWeather();
   }
 
@@ -72,7 +74,8 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   setCoordinates: (location) => dispatch(setCoordinates(location)),
   setCity: (city) => dispatch(setCity(city)),
-  setWeather: (weather) => dispatch(setWeather(weather))
+  setWeather: (weather) => dispatch(setWeather(weather)),
+  reverseGeocode: (coordinates) => dispatch(reverseGeocode(coordinates))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
@@ -82,5 +85,6 @@ App.propTypes = {
   weather: PropTypes.object,
   setCoordinates: PropTypes.func,
   setCity: PropTypes.func,
-  setWeather: PropTypes.func
+  setWeather: PropTypes.func,
+  reverseGeocode: PropTypes.func
 }
