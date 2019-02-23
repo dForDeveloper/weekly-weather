@@ -1,5 +1,5 @@
 export const setCoordinates = ({ latitude, longitude }) => ({
-  type: 'SET_LOCATION',
+  type: 'SET_COORDINATES',
   latitude,
   longitude
 });
