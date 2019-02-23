@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   latitude: null,
   longitude: null,
   city: ''
@@ -6,7 +6,7 @@ const initialState = {
 
 export const locationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_LOCATION':
+    case 'SET_COORDINATES':
       const { latitude, longitude } = action;
       return { ...state, latitude, longitude };
     case 'SET_CITY':
