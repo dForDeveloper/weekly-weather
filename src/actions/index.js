@@ -3,3 +3,8 @@ export const setCoordinates = ({ latitude, longitude }) => ({
   latitude,
   longitude
 });
+
+export const setWeather = (weather) => ({
+  type: 'SET_WEATHER',
+  weather
+});
