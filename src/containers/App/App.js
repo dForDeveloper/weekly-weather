@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Search from '../Search/Search';
 import { fetchData } from '../../utils/api';
 import { setCoordinates, setWeather } from '../../actions';
 import PropTypes from 'prop-types';
@@ -37,14 +38,14 @@ export class App extends Component {
   getIP = async () => {
     const response = await fetchData('http://ip-api.com/json');
     const result = await response.json();
-    const { lat: latitude, lon: longitude } = result; 
+    const { lat: latitude, lon: longitude } = result;
     this.props.setCoordinates({ latitude, longitude });
     this.getWeather();
   }
 
   getWeather = async () => {
     const { latitude, longitude } = this.props.coordinates;
-    const url = `http://localhost:3001/api/v1/${latitude}/${longitude}`;
+    const url = `http://localhost:3001/api/v1/weather/${latitude}/${longitude}`;
     try {
       const response = await fetchData(url);
       const weather = await response.json();
@@ -57,6 +58,7 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
+        <Search />
         {this.props.weather.currently &&
           <h1>Current Temperature: {this.props.weather.currently.temperature}</h1>}
       </div>
