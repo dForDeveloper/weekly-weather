@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Search from '../Search/Search';
 import { fetchData } from '../../utils/api';
-import { setCoordinates, setWeather } from '../../actions';
+import { setCoordinates, setCity, setWeather } from '../../actions';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
@@ -37,18 +37,16 @@ export class App extends Component {
 
   getIP = async () => {
     const response = await fetchData('http://ip-api.com/json');
-    const result = await response.json();
-    const { lat: latitude, lon: longitude } = result;
+    const { lat: latitude, lon: longitude } = await response.json();
     this.props.setCoordinates({ latitude, longitude });
     this.getWeather();
   }
 
   getWeather = async () => {
-    const { latitude, longitude } = this.props.coordinates;
+    const { latitude, longitude } = this.props.location;
     const url = `http://localhost:3001/api/v1/weather/${latitude}/${longitude}`;
     try {
-      const response = await fetchData(url);
-      const weather = await response.json();
+      const weather = await fetchData(url);
       this.props.setWeather(weather);
     } catch (error) {
       console.log(error);
@@ -67,20 +65,22 @@ export class App extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  coordinates: state.coordinates,
+  location: state.location,
   weather: state.weather
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  setCoordinates: (coordinates) => dispatch(setCoordinates(coordinates)),
+  setCoordinates: (location) => dispatch(setCoordinates(location)),
+  setCity: (city) => dispatch(setCity(city)),
   setWeather: (weather) => dispatch(setWeather(weather))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 
 App.propTypes = {
-  coordinates: PropTypes.object,
+  location: PropTypes.object,
   weather: PropTypes.object,
   setCoordinates: PropTypes.func,
+  setCity: PropTypes.func,
   setWeather: PropTypes.func
 }

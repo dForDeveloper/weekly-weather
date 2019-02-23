@@ -4,5 +4,5 @@ export const fetchData = async (url) => {
     const message = await response.json();
     throw Error(message);
   }
-  return await response;
+  return await response.json();
 }
