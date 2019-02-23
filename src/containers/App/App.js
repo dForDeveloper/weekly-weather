@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import Search from '../Search/Search';
 import { fetchData } from '../../utils/api';
 import { setCoordinates, setCity, setWeather } from '../../actions';
@@ -8,16 +8,6 @@ import { reverseGeocode } from '../../thunks/reverseGeocode';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      latitude: 0,
-      longitude: 0,
-      weatherData: {},
-      error: ''
-    }
-  }
-
   componentDidMount() {
     this.getGeolocation();
   }
@@ -44,8 +34,13 @@ export class App extends Component {
     this.getWeather();
   }
 
+  getPath = () => {
+    const { city } = this.props.userLocation;
+    return city.replace(/\W/g, '-');
+  }
+
   getWeather = async () => {
-    const { latitude, longitude } = this.props.location;
+    const { latitude, longitude } = this.props.userLocation;
     const url = `http://localhost:3001/api/v1/weather/${latitude}/${longitude}`;
     try {
       const weather = await fetchData(url);
@@ -56,18 +51,24 @@ export class App extends Component {
   }
 
   render() {
+    const redirectPath = this.getPath();
+    const { userLocation, weather, location } = this.props;
+    const shouldRedirect = !location.pathname.includes(redirectPath);
     return (
       <div className="App">
         <Search />
-        {this.props.weather.currently &&
-          <h1>Current Temperature: {this.props.weather.currently.temperature}</h1>}
+        {shouldRedirect && userLocation.city && <Redirect to={redirectPath} />}
+        {weather.currently &&
+          <h1>
+            Temperature in {userLocation.city}: {weather.currently.temperature}
+          </h1>}
       </div>
     );
   }
 }
 
 export const mapStateToProps = (state) => ({
-  location: state.location,
+  userLocation: state.location,
   weather: state.weather
 });
 
@@ -81,7 +82,7 @@ export const mapDispatchToProps = (dispatch) => ({
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 
 App.propTypes = {
-  location: PropTypes.object,
+  userLocation: PropTypes.object,
   weather: PropTypes.object,
   setCoordinates: PropTypes.func,
   setCity: PropTypes.func,
