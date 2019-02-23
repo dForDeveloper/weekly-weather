@@ -1,8 +1,13 @@
 export const setCoordinates = ({ latitude, longitude }) => ({
-  type: 'SET_COORDINATES',
+  type: 'SET_LOCATION',
   latitude,
   longitude
 });
+
+export const setCity = (city) => ({
+  type: 'SET_CITY',
+  city
+})
 
 export const setWeather = (weather) => ({
   type: 'SET_WEATHER',

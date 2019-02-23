@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { coordinatesReducer } from './coordinatesReducer';
+import { locationReducer } from './locationReducer';
 import { weatherReducer } from './weatherReducer';
 import { errorReducer } from './errorReducer';
 
 const rootReducer = combineReducers({
-  coordinates: coordinatesReducer,
+  location: locationReducer,
   weather: weatherReducer,
   error: errorReducer
 });
