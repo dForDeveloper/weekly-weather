@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { fetchData } from '../../utils/api';
+import { setCoordinates } from '../../actions';
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -20,7 +23,8 @@ class App extends Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
-        this.setState({ latitude, longitude }, () => this.getWeather());
+        this.props.setCoordinates({ latitude, longitude });
+        this.getWeather();
       },
         (error) => this.getIP()
       );
@@ -33,11 +37,12 @@ class App extends Component {
     const response = await fetchData('http://ip-api.com/json');
     const result = await response.json();
     const { lat: latitude, lon: longitude } = result; 
-    this.setState({ latitude, longitude }, () => this.getWeather());
+    this.props.setCoordinates({ latitude, longitude });
+    this.getWeather();
   }
 
   getWeather = async () => {
-    const { latitude, longitude } = this.state;
+    const { latitude, longitude } = this.props.coordinates;
     const url = `http://localhost:3001/api/v1/${latitude}/${longitude}`;
     try {
       const response = await fetchData(url);
@@ -56,4 +61,12 @@ class App extends Component {
   }
 }
 
-export default App;
+export const mapStateToProps = (state) => ({
+  coordinates: state.coordinates
+});
+
+export const mapDispatchToProps = (dispatch) => ({
+  setCoordinates: (coordinates) => dispatch(setCoordinates(coordinates))
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
