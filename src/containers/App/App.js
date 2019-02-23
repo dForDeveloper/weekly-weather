@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
 import Search from '../Search/Search';
 import { fetchData } from '../../utils/api';
-import { setCoordinates, setCity, setWeather } from '../../actions';
+import { setCoordinates } from '../../actions';
+import { getWeather } from '../../thunks/getWeather';
 import { reverseGeocode } from '../../thunks/reverseGeocode';
 import PropTypes from 'prop-types';
 
@@ -18,7 +19,7 @@ export class App extends Component {
         const { latitude, longitude } = position.coords;
         this.props.setCoordinates({ latitude, longitude });
         this.props.reverseGeocode({ latitude, longitude });
-        this.getWeather();
+        this.props.getWeather({ latitude, longitude });
       },
         () => this.getIP()
       );
@@ -31,23 +32,12 @@ export class App extends Component {
     const { lat: latitude, lon: longitude } = await fetchData('http://ip-api.com/json');
     this.props.setCoordinates({ latitude, longitude });
     this.props.reverseGeocode({ latitude, longitude });
-    this.getWeather();
+    this.props.getWeather({ latitude, longitude });
   }
 
   getPath = () => {
     const { city } = this.props.userLocation;
     return city.replace(/\W/g, '-');
-  }
-
-  getWeather = async () => {
-    const { latitude, longitude } = this.props.userLocation;
-    const url = `http://localhost:3001/api/v1/weather/${latitude}/${longitude}`;
-    try {
-      const weather = await fetchData(url);
-      this.props.setWeather(weather);
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   render() {
@@ -73,9 +63,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  setCoordinates: (location) => dispatch(setCoordinates(location)),
-  setCity: (city) => dispatch(setCity(city)),
-  setWeather: (weather) => dispatch(setWeather(weather)),
+  setCoordinates: (coordinates) => dispatch(setCoordinates(coordinates)),
+  getWeather: (coordinates) => dispatch(getWeather(coordinates)),
   reverseGeocode: (coordinates) => dispatch(reverseGeocode(coordinates))
 });
 
@@ -85,7 +74,6 @@ App.propTypes = {
   userLocation: PropTypes.object,
   weather: PropTypes.object,
   setCoordinates: PropTypes.func,
-  setCity: PropTypes.func,
-  setWeather: PropTypes.func,
+  getWeather: PropTypes.func,
   reverseGeocode: PropTypes.func
 }
