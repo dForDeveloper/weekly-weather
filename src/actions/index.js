@@ -8,3 +8,8 @@ export const setWeather = (weather) => ({
   type: 'SET_WEATHER',
   weather
 });
+
+export const setError = (message) => ({
+  type: 'SET_ERROR',
+  message
+})
