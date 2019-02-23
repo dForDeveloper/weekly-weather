@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchData } from '../../utils/api';
-import { setCoordinates } from '../../actions';
+import { setCoordinates, setWeather } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   constructor() {
@@ -26,7 +27,7 @@ export class App extends Component {
         this.props.setCoordinates({ latitude, longitude });
         this.getWeather();
       },
-        (error) => this.getIP()
+        () => this.getIP()
       );
     } else {
       this.getIP();
@@ -46,8 +47,8 @@ export class App extends Component {
     const url = `http://localhost:3001/api/v1/${latitude}/${longitude}`;
     try {
       const response = await fetchData(url);
-      const result = await response.json();
-      console.log(result);
+      const weather = await response.json();
+      this.props.setWeather(weather);
     } catch (error) {
       console.log(error);
     }
@@ -56,17 +57,28 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
+        {this.props.weather.currently &&
+          <h1>Current Temperature: {this.props.weather.currently.temperature}</h1>}
       </div>
     );
   }
 }
 
 export const mapStateToProps = (state) => ({
-  coordinates: state.coordinates
+  coordinates: state.coordinates,
+  weather: state.weather
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  setCoordinates: (coordinates) => dispatch(setCoordinates(coordinates))
+  setCoordinates: (coordinates) => dispatch(setCoordinates(coordinates)),
+  setWeather: (weather) => dispatch(setWeather(weather))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+
+App.propTypes = {
+  coordinates: PropTypes.object,
+  weather: PropTypes.object,
+  setCoordinates: PropTypes.func,
+  setWeather: PropTypes.func
+}
