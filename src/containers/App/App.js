@@ -13,7 +13,7 @@ export class App extends Component {
   render() {
     const { userLocation, weather, location, error, isLoading } = this.props;
     const { city } = userLocation;
-    const redirectPath = city.replace(/\W/g, '-');
+    const redirectPath = city.replace(/\s/g, '');
     const shouldRedirect = !location.pathname.includes(redirectPath) && city;
     return (
       <div className="App">
