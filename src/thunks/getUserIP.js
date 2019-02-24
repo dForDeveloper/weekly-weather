@@ -12,6 +12,7 @@ export const getUserIP = () => {
       dispatch(setCoordinates({ latitude, longitude }));
       dispatch(reverseGeocode({ latitude, longitude }));
       dispatch(getWeather({ latitude, longitude }));
+      dispatch(setError(''));
     } catch (error) {
       dispatch(setError(error.message));
     }
