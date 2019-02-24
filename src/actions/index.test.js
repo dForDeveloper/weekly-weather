@@ -1,9 +1,7 @@
 import * as actions from './index';
 
 describe('setCoordinates', () => {
-  it(`
-    should return an action of type SET_COORDINATES with latitude and longitude
-  `, () => {
+  it('should return an action of type SET_COORDINATES with latitude and longitude', () => {
     const latitude = 39.6796;
     const longitude = -104.9626;
     const expected = {
@@ -29,9 +27,7 @@ describe('setCity', () => {
 
 describe('setWeather', () => {
   it('should return an action of type SET_WEATHER with weather', () => {
-    const mockWeather = {
-      currently: { temperature: 39 }
-    }
+    const mockWeather = { currently: { temperature: 39 } };
     const expected = {
       type: 'SET_WEATHER',
       weather: mockWeather
