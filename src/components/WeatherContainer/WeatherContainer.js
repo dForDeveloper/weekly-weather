@@ -1,7 +1,7 @@
 import React from 'react';
 import { ForecastBar } from '../ForecastBar/ForecastBar';
 
-const CurrentWeather = ({ city, weather }) => {
+const WeatherContainer = ({ city, weather }) => {
   const { today, week, minTemp, maxTemp } = weather;
   const {
     temperature,
@@ -39,4 +39,4 @@ const CurrentWeather = ({ city, weather }) => {
   );
 }
 
-export default CurrentWeather;
+export default WeatherContainer;
