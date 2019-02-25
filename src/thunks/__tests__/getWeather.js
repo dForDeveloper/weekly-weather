@@ -1,5 +1,6 @@
 import { getWeather } from '../getWeather';
 import * as api from '../../utils/api';
+import * as helper from '../../utils/dataCleaner';
 import { setWeather, setError, toggleLoading } from '../../actions';
 
 describe('getWeather', () => {
@@ -10,6 +11,7 @@ describe('getWeather', () => {
   const mockDispatch = jest.fn();
   const thunk = getWeather(mockCoordinates);
   api.fetchData = jest.fn(() => mockWeather);
+  helper.cleanData = jest.fn(() => mockWeather);
 
   it('should call dispatch with toggleLoading as true', async () => {
     const expected = toggleLoading(true);
