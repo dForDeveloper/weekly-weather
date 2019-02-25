@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
 import Search from '../Search/Search';
+import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
 import { getUserIP } from '../../thunks/getUserIP';
 import PropTypes from 'prop-types';
 
@@ -21,10 +22,8 @@ export class App extends Component {
         {!isLoading && 
           <div>
             {shouldRedirect && <Redirect to={redirectPath} />}
-            {weather.currently && !error &&
-              <h1>
-                Temperature in {city}: {parseInt(weather.currently.temperature)}
-              </h1>}
+            {weather.today && !error &&
+              <CurrentWeather city={city} weather={weather} />}
             {error && <h1>No results found</h1>}
           </div>}
         {isLoading && <h1>Loading...</h1>}
