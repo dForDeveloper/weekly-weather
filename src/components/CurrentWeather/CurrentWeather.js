@@ -1,5 +1,5 @@
 import React from 'react';
-import { ForecastBar } from '../LowHighRangeBar/LowHighRangeBar';
+import { ForecastBar } from '../ForecastBar/ForecastBar';
 
 const CurrentWeather = ({ city, weather }) => {
   const { today, week, minTemp, maxTemp } = weather;
