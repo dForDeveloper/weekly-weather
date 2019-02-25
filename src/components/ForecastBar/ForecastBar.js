@@ -1,13 +1,13 @@
 import React from 'react';
 
-export const LowHighRangeBar = ({ icon, day, min, max, high, low }) => {
+export const ForecastBar = ({ icon, day, min, max, high, low }) => {
   const barStyle = {
     width: 100 * (high - low) / (max - min) + '%',
     marginLeft: 100 * (low - min) / (max - min) + '%'
   }
   return (
     <div>
-      <div className='LowHighRangeBar'>
+      <div className='ForecastBar'>
         <span className={icon +' small-icon'}></span>
         <span className='day'>{day}</span>
         <span className='bar-container'>

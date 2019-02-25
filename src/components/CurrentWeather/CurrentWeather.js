@@ -1,5 +1,5 @@
 import React from 'react';
-import { LowHighRangeBar } from '../LowHighRangeBar/LowHighRangeBar';
+import { ForecastBar } from '../LowHighRangeBar/LowHighRangeBar';
 
 const CurrentWeather = ({ city, weather }) => {
   const { today, week, minTemp, maxTemp } = weather;
@@ -23,8 +23,8 @@ const CurrentWeather = ({ city, weather }) => {
       <h1>{temperature}° and {summary} in {city}</h1>
       <div className={icon}></div>
       <p>Feels like: {feelsLike}°</p>
-      <p>High: {high}°</p>
       <p>Low: {low}°</p>
+      <p>High: {high}°</p>
       <p>Sunrise: {sunrise}</p>
       <p>Sunset: {sunset}</p>
       <p>Chance of {precipType}: {precipProbability}</p>
@@ -32,7 +32,7 @@ const CurrentWeather = ({ city, weather }) => {
       <p>Humidity: {humidity}</p>
       {week.map((day, index) => {
         return (
-          <LowHighRangeBar key={index} min={minTemp} max={maxTemp} {...day} />
+          <ForecastBar key={index} min={minTemp} max={maxTemp} {...day} />
         );
       })}
     </div>

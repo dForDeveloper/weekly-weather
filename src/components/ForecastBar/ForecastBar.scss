@@ -1,0 +1,51 @@
+.ForecastBar {
+  width: 100%;
+  border: 1px solid black;
+  height: 48px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(3, 48px) 1fr repeat(2, 48px);
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.small-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.bar-container {
+  height: 20px;
+  margin-bottom: 6px;
+  grid-column: 4/5;
+}
+
+.bar {
+  height: 17px;
+  background-color: #333333;
+  border-radius: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+
+.high {
+  vertical-align: middle;
+  position: absolute;
+  right: -42px;
+  top: -3px;
+}
+
+.button {
+  grid-column: 6/7;
+}
+
+.low {
+  position: absolute;
+  left: -35px;
+  top: -3px;
+}
+
+.day {
+  margin-left: 8px;
+}
