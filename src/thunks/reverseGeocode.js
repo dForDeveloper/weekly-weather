@@ -1,9 +1,8 @@
 import { fetchData } from '../utils/api';
-import { setCity, setError, toggleLoading } from '../actions';
+import { setCity, setError } from '../actions';
 
 export const reverseGeocode = ({ latitude: lat, longitude: lon }) => {
   return async (dispatch) => {
-    dispatch(toggleLoading(true));
     try {
       const url = `http://localhost:3001/api/v1/reversegeocode/${lat}/${lon}`;
       const geocodeData = await fetchData(url);
@@ -13,6 +12,5 @@ export const reverseGeocode = ({ latitude: lat, longitude: lon }) => {
     } catch (error) {
       dispatch(setError(error.message))
     }
-    dispatch(toggleLoading(false));
   }
 }

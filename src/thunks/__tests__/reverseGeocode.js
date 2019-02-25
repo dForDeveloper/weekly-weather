@@ -1,6 +1,6 @@
 import { reverseGeocode } from '../reverseGeocode';
 import * as api from '../../utils/api';
-import { setCity, setError, toggleLoading } from '../../actions';
+import { setCity, setError } from '../../actions';
 
 describe('reverseGeocode', () => {
   const lat = 39.6796;
@@ -10,12 +10,6 @@ describe('reverseGeocode', () => {
   const mockDispatch = jest.fn();
   const thunk = reverseGeocode(mockCoordinates);
   api.fetchData = jest.fn(() => mockData);
-
-  it('should call dispatch with toggleLoading as true', async () => {
-    const expected = toggleLoading(true);
-    await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(expected);
-  });
 
   it('should call fetchData with the correct param', async () => {
     const url = `http://localhost:3001/api/v1/reversegeocode/${lat}/${lon}`;
@@ -31,12 +25,6 @@ describe('reverseGeocode', () => {
 
   it('should call dispatch with setError with an empty string', async () => {
     const expected = setError('');
-    await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(expected);
-  });
-
-  it('should call dispatch with toggleLoading as false', async () => {
-    const expected = toggleLoading(false);
     await thunk(mockDispatch);
     expect(mockDispatch).toHaveBeenCalledWith(expected);
   });

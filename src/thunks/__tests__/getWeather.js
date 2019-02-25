@@ -1,7 +1,7 @@
 import { getWeather } from '../getWeather';
 import * as api from '../../utils/api';
 import * as helper from '../../utils/dataCleaner';
-import { setWeather, setError, toggleLoading } from '../../actions';
+import { setWeather, setError } from '../../actions';
 
 describe('getWeather', () => {
   const lat = 39.6796;
@@ -12,12 +12,6 @@ describe('getWeather', () => {
   const thunk = getWeather(mockCoordinates);
   api.fetchData = jest.fn(() => mockWeather);
   helper.cleanData = jest.fn(() => mockWeather);
-
-  it('should call dispatch with toggleLoading as true', async () => {
-    const expected = toggleLoading(true);
-    await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(expected);
-  });
 
   it('should call fetchData with the correct param', async () => {
     const url = `http://localhost:3001/api/v1/weather/${lat}/${lon}`;
@@ -33,12 +27,6 @@ describe('getWeather', () => {
 
   it('should call dispatch with setError with an empty string', async () => {
     const expected = setError('');
-    await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(expected);
-  });
-
-  it('should call dispatch with toggleLoading as false', async () => {
-    const expected = toggleLoading(false);
     await thunk(mockDispatch);
     expect(mockDispatch).toHaveBeenCalledWith(expected);
   });
