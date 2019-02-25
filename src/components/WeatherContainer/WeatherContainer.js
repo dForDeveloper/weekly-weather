@@ -1,8 +1,9 @@
 import React from 'react';
 import { ForecastBar } from '../ForecastBar/ForecastBar';
+import { Graph } from '../Graph/Graph';
 
 const WeatherContainer = ({ city, weather }) => {
-  const { today, week, minTemp, maxTemp } = weather;
+  const { today, week, minTemp, maxTemp, graphData } = weather;
   const {
     temperature,
     feelsLike,
@@ -30,6 +31,7 @@ const WeatherContainer = ({ city, weather }) => {
       <p>Chance of {precipType}: {precipProbability}</p>
       <p>Wind: {wind}</p>
       <p>Humidity: {humidity}</p>
+      <Graph data={graphData} low={low} high={high} />
       {week.map((day, index) => {
         return (
           <ForecastBar key={index} min={minTemp} max={maxTemp} {...day} />
