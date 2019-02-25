@@ -12,20 +12,24 @@ export class Search extends Component {
   }
 
   handleChange = (event) => {
-    const { value: query } = event.target;
-    this.setState({ query });
+    this.setState({ query: event.target.value });
   }
 
   handleSubmit = async (event) => {
     event.preventDefault();
     let { query } = this.state;
     this.props.forwardGeocode(query);
+    this.setState({ query: '' });
   }
 
   render() {
     return(
       <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleChange} placeholder='search for a city' />
+        <input
+          value={this.state.query}
+          onChange={this.handleChange}
+          placeholder='search for a city'
+        />
       </form>
     );
   }
