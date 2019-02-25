@@ -10,7 +10,7 @@ describe('forwardGeocode', () => {
   const mockData = [
     {
       geometry: { lat: 39.6796, lng: -104.9626 },
-      components: { city: 'Denver' , state_code: 'CO' }
+      components: { city: 'Denver', state_code: 'CO' }
     }
   ];
   const mockDispatch = jest.fn();
