@@ -13,7 +13,8 @@ export const cleanData = (weather) => {
     temperature: Math.round(temperature),
     feelsLike: Math.round(apparentTemperature)
   };
-  return { today, week, minTemp, maxTemp };
+  const graphData = getGraphData(weather.hourly.data.slice(0,24));
+  return { today, week, minTemp, maxTemp, graphData };
 }
 
 export const getWeekForecast = (data) => {
@@ -70,4 +71,18 @@ export const getWindDirection = (windBearing) => {
     case 15: return 'NNW';
     default: return undefined;
   }
+}
+
+export const getGraphData = (hourData) => {
+  const data = hourData.map(hour => {
+    return {
+      "x": (new Date(hour.time * 1000))
+        .toLocaleTimeString().replace(/:\d+/, ''),
+      "y": Math.round(hour.temperature)
+    }
+  });
+  return [{
+    "id": "",
+    "data": data
+  }];
 }
