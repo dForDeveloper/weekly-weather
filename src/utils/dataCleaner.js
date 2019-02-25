@@ -13,9 +13,7 @@ export const cleanData = (weather) => {
     temperature: Math.round(temperature),
     feelsLike: Math.round(apparentTemperature)
   };
-  const clean = { today, week, minTemp, maxTemp };
-  console.log('clean', clean);
-  return clean;
+  return { today, week, minTemp, maxTemp };
 }
 
 export const getWeekForecast = (data) => {
@@ -38,7 +36,7 @@ export const getWeekForecast = (data) => {
       summary,
       icon,
       precipType,
-      precipProbability: precipProbability * 100 + '%',
+      precipProbability: Math.round(precipProbability * 100) + '%',
       day: (new Date(time * 1000).toDateString().slice(0,3)),
       low: Math.round(temperatureLow),
       high: Math.round(temperatureHigh),
@@ -47,7 +45,7 @@ export const getWeekForecast = (data) => {
       sunset: (new Date(sunsetTime * 1000))
         .toLocaleTimeString('en-US').replace(/:\d+/, ''),
       wind: Math.round(windSpeed) + ' mph ' + getWindDirection(windBearing),
-      humidity: humidity * 100 + '%'
+      humidity: Math.round(humidity * 100) + '%'
     }
   });
 }
