@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ForecastBar should match the snapshow when is expanded is false 1`] = `
-<div>
+<div
+  className="ForecastBar"
+>
   <div
-    className="ForecastBar"
+    className="ForecastBar--bar-container"
   >
     <span
       className="snow small-icon"
@@ -40,7 +42,7 @@ exports[`ForecastBar should match the snapshow when is expanded is false 1`] = `
       </span>
     </span>
     <button
-      className="button"
+      className="ForecastBar--button"
       onClick={[Function]}
     >
       +
@@ -50,9 +52,11 @@ exports[`ForecastBar should match the snapshow when is expanded is false 1`] = `
 `;
 
 exports[`ForecastBar should match the snapshow when is expanded is true 1`] = `
-<div>
+<div
+  className="ForecastBar"
+>
   <div
-    className="ForecastBar"
+    className="ForecastBar--bar-container"
   >
     <span
       className="snow small-icon"
@@ -89,48 +93,75 @@ exports[`ForecastBar should match the snapshow when is expanded is true 1`] = `
       </span>
     </span>
     <button
-      className="button"
+      className="ForecastBar--button"
       onClick={[Function]}
     >
-      -
+      --
     </button>
   </div>
-  <div>
-    <h3>
-      Snow (&lt; 1 in.) until afternoon.
-    </h3>
-    <p>
-      Low: 
-      19
-      °
-    </p>
-    <p>
-      High: 
-      37
-      °
-    </p>
-    <p>
-      Sunrise: 
-      6:56 AM
-    </p>
-    <p>
-      Sunset: 
-      5:17 PM
-    </p>
-    <p>
-      Chance of 
-      snow
-      : 
-      51%
-    </p>
-    <p>
-      Wind: 
-      3 mph WNW
-    </p>
-    <p>
-      Humidity: 
-      66%
-    </p>
-  </div>
+  <article
+    className="article article--expanded"
+  >
+    <header
+      className="article--header"
+    >
+      <h2
+        className="h2"
+      >
+        <div
+          className="snow"
+        />
+        Snow (&lt; 1 in.) until afternoon.
+      </h2>
+      <span>
+        Chance of 
+        snow
+        : 
+        51%
+      </span>
+    </header>
+    <div
+      className="article--div"
+    >
+      <p
+        className="p"
+      >
+        Low: 
+        19
+        °
+      </p>
+      <p
+        className="p"
+      >
+        Sunrise: 
+        6:56 AM
+      </p>
+      <p
+        className="p"
+      >
+        Wind: 
+        3 mph WNW
+      </p>
+      <p
+        className="p"
+      >
+        High: 
+        37
+        °
+      </p>
+      <p
+        className="p"
+      >
+        Sunset: 
+        5:17 PM
+      </p>
+      <p
+        className="p"
+      >
+        Humidity: 
+        66%
+      </p>
+    </div>
+  </article>
 </div>
 `;

@@ -1,54 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WeatherContainer should match the snapshot 1`] = `
-<div>
-  <h1>
-    31
-    ° and 
-    Partly Cloudy
-     in 
-    Denver, CO
-  </h1>
-  <div
-    className="snow"
-  />
-  <p>
-    Feels like: 
-    21
-    °
-  </p>
-  <p>
-    Low: 
-    19
-    °
-  </p>
-  <p>
-    High: 
-    37
-    °
-  </p>
-  <p>
-    Sunrise: 
-    6:56 AM
-  </p>
-  <p>
-    Sunset: 
-    5:17 PM
-  </p>
-  <p>
-    Chance of 
-    snow
-    : 
-    51%
-  </p>
-  <p>
-    Wind: 
-    3 mph WNW
-  </p>
-  <p>
-    Humidity: 
-    66%
-  </p>
+<main
+  className="WeatherContainer"
+>
+  <article
+    className="article"
+  >
+    <header
+      className="article--header"
+    >
+      <h2
+        className="h2"
+      >
+        <div
+          className="snow"
+        />
+        31
+        ° and 
+        Partly Cloudy
+         in 
+        Denver, CO
+      </h2>
+      <span
+        className="header--span--feels"
+      >
+        Feels like: 
+        21
+        °
+      </span>
+      <span
+        className="header--span--precip"
+      >
+        Chance of 
+        snow
+        : 
+        51%
+      </span>
+    </header>
+    <div
+      className="article--div"
+    >
+      <p
+        className="p"
+      >
+        Low: 
+        19
+        °
+      </p>
+      <p
+        className="p"
+      >
+        Sunrise: 
+        6:56 AM
+      </p>
+      <p
+        className="p"
+      >
+        Wind: 
+        3 mph WNW
+      </p>
+      <p
+        className="p"
+      >
+        High: 
+        37
+        °
+      </p>
+      <p
+        className="p"
+      >
+        Sunset: 
+        5:17 PM
+      </p>
+      <p
+        className="p"
+      >
+        Humidity: 
+        66%
+      </p>
+    </div>
+  </article>
   <Graph
     data={
       Array [
@@ -78,21 +110,25 @@ exports[`WeatherContainer should match the snapshot 1`] = `
     high={37}
     low={19}
   />
-  <ForecastBar
-    day="Sun"
-    high={42}
-    humidity="51%"
-    icon="partly-cloudy-day"
-    key="0"
-    low={23}
-    max={42}
-    min={19}
-    precipProbability="4%"
-    precipType="snow"
-    summary="Partly cloudy until afternoon."
-    sunrise="6:31 AM"
-    sunset="5:24 PM"
-    wind="5 mph SSE"
-  />
-</div>
+  <section
+    className="section"
+  >
+    <ForecastBar
+      day="Sun"
+      high={42}
+      humidity="51%"
+      icon="partly-cloudy-day"
+      key="0"
+      low={23}
+      max={42}
+      min={19}
+      precipProbability="4%"
+      precipType="snow"
+      summary="Partly cloudy until afternoon."
+      sunrise="6:31 AM"
+      sunset="5:24 PM"
+      wind="5 mph SSE"
+    />
+  </section>
+</main>
 `;

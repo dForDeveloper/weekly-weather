@@ -4,6 +4,15 @@ exports[`App should match the snapshot when isLoading is false 1`] = `
 <div
   className="App"
 >
+  <header
+    className="App--header"
+  >
+    <h1
+      className="h1"
+    >
+      Weekly Weather
+    </h1>
+  </header>
   <Connect(Search) />
   <div>
     <WeatherContainer
@@ -76,6 +85,15 @@ exports[`App should match the snapshot when isLoading is true 1`] = `
 <div
   className="App"
 >
+  <header
+    className="App--header"
+  >
+    <h1
+      className="h1"
+    >
+      Weekly Weather
+    </h1>
+  </header>
   <Connect(Search) />
   <h1>
     Loading...
@@ -87,6 +105,15 @@ exports[`App should match the snapshot when there is an error 1`] = `
 <div
   className="App"
 >
+  <header
+    className="App--header"
+  >
+    <h1
+      className="h1"
+    >
+      Weekly Weather
+    </h1>
+  </header>
   <Connect(Search) />
   <div>
     <h1>
@@ -100,6 +127,15 @@ exports[`App should redirect when pathname does not match the city 1`] = `
 <div
   className="App"
 >
+  <header
+    className="App--header"
+  >
+    <h1
+      className="h1"
+    >
+      Weekly Weather
+    </h1>
+  </header>
   <Connect(Search) />
   <div>
     <Redirect

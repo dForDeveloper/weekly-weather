@@ -4,6 +4,11 @@ exports[`Graph should match the snapshot 1`] = `
 <div
   className="Graph"
 >
+  <h3
+    className="h3"
+  >
+    24 Hour Forecast
+  </h3>
   <ResponsiveLine
     animate={true}
     axisBottom={
@@ -32,7 +37,7 @@ exports[`Graph should match the snapshot 1`] = `
     axisTop={null}
     colors={
       Array [
-        "blue",
+        "#4285f4",
       ]
     }
     curve="monotoneX"
@@ -74,8 +79,8 @@ exports[`Graph should match the snapshot 1`] = `
       Object {
         "bottom": 64,
         "left": 48,
-        "right": 16,
-        "top": 50,
+        "right": 24,
+        "top": 16,
       }
     }
     motionDamping={15}
