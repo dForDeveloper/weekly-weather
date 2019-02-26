@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot when isLoading is false 1`] = `
+<div
+  className="App"
+>
+  <Connect(Search) />
+  <div>
+    <WeatherContainer
+      city="denver"
+      weather={
+        Object {
+          "graphData": Array [
+            Object {
+              "data": Array [
+                Object {
+                  "x": "7:00 PM",
+                  "y": 37,
+                },
+                Object {
+                  "x": "8:00 PM",
+                  "y": 33,
+                },
+                Object {
+                  "x": "9:00 PM",
+                  "y": 31,
+                },
+                Object {
+                  "x": "10:00 PM",
+                  "y": 29,
+                },
+              ],
+              "id": "",
+            },
+          ],
+          "maxTemp": 42,
+          "minTemp": 19,
+          "today": Object {
+            "day": "Sat",
+            "feelsLike": 21,
+            "high": 37,
+            "humidity": "66%",
+            "icon": "snow",
+            "low": 19,
+            "precipProbability": "51%",
+            "precipType": "snow",
+            "summary": "Partly Cloudy",
+            "sunrise": "6:56 AM",
+            "sunset": "5:17 PM",
+            "temperature": 31,
+            "wind": "3 mph WNW",
+          },
+          "week": Array [
+            Object {
+              "day": "Sun",
+              "high": 42,
+              "humidity": "51%",
+              "icon": "partly-cloudy-day",
+              "low": 23,
+              "precipProbability": "4%",
+              "precipType": "snow",
+              "summary": "Partly cloudy until afternoon.",
+              "sunrise": "6:31 AM",
+              "sunset": "5:24 PM",
+              "wind": "5 mph SSE",
+            },
+          ],
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`App should match the snapshot when isLoading is true 1`] = `
+<div
+  className="App"
+>
+  <Connect(Search) />
+  <h1>
+    Loading...
+  </h1>
+</div>
+`;
+
+exports[`App should match the snapshot when there is an error 1`] = `
+<div
+  className="App"
+>
+  <Connect(Search) />
+  <div>
+    <h1>
+      No results found
+    </h1>
+  </div>
+</div>
+`;
+
+exports[`App should redirect when pathname does not match the city 1`] = `
+<div
+  className="App"
+>
+  <Connect(Search) />
+  <div>
+    <Redirect
+      push={false}
+      to="denver"
+    />
+    <WeatherContainer
+      city="denver"
+      weather={
+        Object {
+          "graphData": Array [
+            Object {
+              "data": Array [
+                Object {
+                  "x": "7:00 PM",
+                  "y": 37,
+                },
+                Object {
+                  "x": "8:00 PM",
+                  "y": 33,
+                },
+                Object {
+                  "x": "9:00 PM",
+                  "y": 31,
+                },
+                Object {
+                  "x": "10:00 PM",
+                  "y": 29,
+                },
+              ],
+              "id": "",
+            },
+          ],
+          "maxTemp": 42,
+          "minTemp": 19,
+          "today": Object {
+            "day": "Sat",
+            "feelsLike": 21,
+            "high": 37,
+            "humidity": "66%",
+            "icon": "snow",
+            "low": 19,
+            "precipProbability": "51%",
+            "precipType": "snow",
+            "summary": "Partly Cloudy",
+            "sunrise": "6:56 AM",
+            "sunset": "5:17 PM",
+            "temperature": 31,
+            "wind": "3 mph WNW",
+          },
+          "week": Array [
+            Object {
+              "day": "Sun",
+              "high": 42,
+              "humidity": "51%",
+              "icon": "partly-cloudy-day",
+              "low": 23,
+              "precipProbability": "4%",
+              "precipType": "snow",
+              "summary": "Partly cloudy until afternoon.",
+              "sunrise": "6:31 AM",
+              "sunset": "5:24 PM",
+              "wind": "5 mph SSE",
+            },
+          ],
+        }
+      }
+    />
+  </div>
+</div>
+`;
