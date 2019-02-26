@@ -20,9 +20,13 @@ describe('ForecastBar', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should have default state', () => {
+    expect(wrapper.state('isExpanded')).toEqual(false);
+  });
+
   it('should toggle isExpanded when the button is clicked', () => {
     expect(wrapper.state('isExpanded')).toEqual(false);
     wrapper.find('.button').simulate('click');
     expect(wrapper.state('isExpanded')).toEqual(true);
-  })
+  });
 });
