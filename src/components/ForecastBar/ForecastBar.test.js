@@ -26,7 +26,7 @@ describe('ForecastBar', () => {
 
   it('should toggle isExpanded when the button is clicked', () => {
     expect(wrapper.state('isExpanded')).toEqual(false);
-    wrapper.find('.button').simulate('click');
+    wrapper.find('.ForecastBar--button').simulate('click');
     expect(wrapper.state('isExpanded')).toEqual(true);
   });
 });
