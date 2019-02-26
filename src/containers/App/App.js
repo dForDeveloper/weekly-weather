@@ -27,9 +27,9 @@ export class App extends Component {
             {shouldRedirect && <Redirect to={redirectPath} />}
             {weather.today && !error &&
               <WeatherContainer city={city} weather={weather} />}
-            {error && <h1>No results found</h1>}
+            {error && <h2 className="h2--error">No results found</h2>}
           </div>}
-        {isLoading && <h1>Loading...</h1>}
+        {isLoading && <h2 className="h2--loading">Loading...</h2>}
       </div>
     );
   }

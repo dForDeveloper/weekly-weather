@@ -95,9 +95,11 @@ exports[`App should match the snapshot when isLoading is true 1`] = `
     </h1>
   </header>
   <Connect(Search) />
-  <h1>
+  <h2
+    className="h2--loading"
+  >
     Loading...
-  </h1>
+  </h2>
 </div>
 `;
 
@@ -116,9 +118,11 @@ exports[`App should match the snapshot when there is an error 1`] = `
   </header>
   <Connect(Search) />
   <div>
-    <h1>
+    <h2
+      className="h2--error"
+    >
       No results found
-    </h1>
+    </h2>
   </div>
 </div>
 `;
