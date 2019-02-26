@@ -1,6 +1,8 @@
 .icon {
-  height: 150px;
-  width: 150px;
+  height: 80px;
+  width: 80px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .clear-day {
@@ -51,4 +53,43 @@
 .wind {
   @extend .icon;
   background-image: url('../icons/wind.svg');
+}
+
+.WeatherContainer--width {
+  margin: auto;
+  width: 90%;
+}
+
+.article {
+  @extend .WeatherContainer--width;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.article--header {
+  grid-column: 1/4;
+  margin-bottom: 16px;
+}
+
+.article--div {
+  margin: auto;
+  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.header--span--feels {
+  margin-right: 5%;
+}
+
+.header--span--precip {
+  margin-left: 5%;
+}
+
+.p {
+  margin: 4px;
+}
+
+.section {
+  @extend .WeatherContainer--width;
 }

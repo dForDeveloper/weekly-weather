@@ -33,8 +33,8 @@ export class ForecastBar extends Component {
       marginLeft: 100 * (low - min) / (max - min) + '%'
     }
     return (
-      <div>
-        <div className='ForecastBar'>
+      <div className="ForecastBar">
+        <div className={'ForecastBar--bar-container'}>
           <span className={icon +' small-icon'}></span>
           <span className='day'>{day}</span>
           <span className='bar-container'>
@@ -43,19 +43,26 @@ export class ForecastBar extends Component {
               <span className='high'>{high}°</span>
             </span>
           </span>
-          <button className='button' onClick={this.handleClick}>{isExpanded ? '-' : '+'}</button>
+          <button className='ForecastBar--button' onClick={this.handleClick}>
+            {isExpanded ? '--' : '+'}
+          </button>
         </div>
         {isExpanded &&
-          <div>
-            <h3>{summary}</h3>
-            <p>Low: {low}°</p>
-            <p>High: {high}°</p>
-            <p>Sunrise: {sunrise}</p>
-            <p>Sunset: {sunset}</p>
-            <p>Chance of {precipType}: {precipProbability}</p>
-            <p>Wind: {wind}</p>
-            <p>Humidity: {humidity}</p>
-          </div>}
+          <article className="article article--expanded">
+            <header className='article--header'>
+              <h2 className="h2"><div className={icon}></div>{summary}</h2>
+              <span>Chance of {precipType}: {precipProbability}</span>
+            </header>
+            <div className="article--div">
+              <p className="p">Low: {low}°</p>
+              <p className="p">Sunrise: {sunrise}</p>
+              <p className="p">Wind: {wind}</p>
+              <p className="p">High: {high}°</p>
+              <p className="p">Sunset: {sunset}</p>
+              <p className="p">Humidity: {humidity}</p>
+            </div>
+          </article>
+        }
       </div>
     );
   }

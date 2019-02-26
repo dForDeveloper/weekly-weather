@@ -28,7 +28,7 @@ export class Search extends Component {
         <input
           value={this.state.query}
           onChange={this.handleChange}
-          placeholder='search for a city'
+          placeholder='search cities'
           className='Search--input'
         />
       </form>

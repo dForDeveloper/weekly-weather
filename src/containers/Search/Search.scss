@@ -1,0 +1,24 @@
+.Search {
+  margin: 32px;
+  height: 32px;
+  text-align: center;
+}
+
+.Search--input {
+  padding: 8px 0 0;
+  font-size: 24px;
+  outline: none;
+  text-align: center;
+  width: 320px;
+  border: none;
+  border-bottom: 2px solid #dfe1e4;
+
+  &::placeholder {
+    font-size: 20px;
+    color: #dfe1e4;
+  }
+
+  &:focus {
+    border-bottom: 2px solid $blue;
+  }
+}

@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import "normalize";
 @import "index";
+@import "variables";
 @import "../containers/App/App.scss";
+@import "../containers/Search/Search.scss";
 @import "../components/WeatherContainer/WeatherContainer.scss";
 @import "../components/ForecastBar/ForecastBar.scss";
 @import "../components/Graph/Graph.scss";
+@import "../components/Loader/Loader.scss";

@@ -18,6 +18,9 @@ export class App extends Component {
     const shouldRedirect = !location.pathname.includes(redirectPath) && city;
     return (
       <div className="App">
+        <header className="App--header">
+          <h1 className="h1">Weekly Weather</h1>
+        </header>
         <Search />
         {!isLoading && 
           <div>

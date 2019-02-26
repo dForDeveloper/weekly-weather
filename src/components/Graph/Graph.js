@@ -7,11 +7,12 @@ export const Graph = ({ data, low, high }) => {
   const yMax = high + 20;
   return (
     <div className='Graph'>
+      <h3 className="h3">24 Hour Forecast</h3>
       <ResponsiveLine
           data={data}
           margin={{
-              "top": 50,
-              "right": 16,
+              "top": 16,
+              "right": 24,
               "bottom": 64,
               "left": 48
           }}
@@ -46,7 +47,7 @@ export const Graph = ({ data, low, high }) => {
               "legendPosition": "middle"
           }}
           enableGridX={false}
-          colors={['blue']}
+          colors={['#4285f4']}
           dotSize={10}
           dotColor="inherit:darker(0.3)"
           dotBorderWidth={2}

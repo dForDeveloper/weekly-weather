@@ -21,24 +21,39 @@ const WeatherContainer = ({ city, weather }) => {
   } = today;
 
   return (
-    <div>
-      <h1>{temperature}° and {summary} in {city}</h1>
-      <div className={icon}></div>
-      <p>Feels like: {feelsLike}°</p>
-      <p>Low: {low}°</p>
-      <p>High: {high}°</p>
-      <p>Sunrise: {sunrise}</p>
-      <p>Sunset: {sunset}</p>
-      <p>Chance of {precipType}: {precipProbability}</p>
-      <p>Wind: {wind}</p>
-      <p>Humidity: {humidity}</p>
+    <main className="WeatherContainer">
+      <article className="article">
+        <header className='article--header'>
+          <h2 className="h2">
+            <div className={icon}></div>
+            {temperature}° and {summary} in {city}
+          </h2>
+          <span className="header--span--feels">
+            Feels like: {feelsLike}°
+          </span>
+          <span className="header--span--precip">
+            Chance of {precipType}: {precipProbability}
+          </span>
+        </header>
+        <div className="article--div">
+          <p className="p">Low: {low}°</p>
+          <p className="p">Sunrise: {sunrise}</p>
+          <p className="p">Wind: {wind}</p>
+          <p className="p">High: {high}°</p>
+          <p className="p">Sunset: {sunset}</p>
+          <p className="p">Humidity: {humidity}</p>
+
+        </div>
+      </article>
       <Graph data={graphData} low={low} high={high} />
-      {week.map((day, index) => {
-        return (
-          <ForecastBar key={index} min={minTemp} max={maxTemp} {...day} />
-        );
-      })}
-    </div>
+      <section className="section">
+        {week.map((day, index) => {
+          return (
+            <ForecastBar key={index} min={minTemp} max={maxTemp} {...day} />
+          );
+        })}
+      </section>
+    </main>
   );
 }
 
