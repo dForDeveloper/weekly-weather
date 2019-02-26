@@ -1,9 +1,13 @@
 import * as cleaner from './dataCleaner';
 import * as mockData from './mockData';
 
+Math.round = jest.fn((num) => {
+  if (num - parseInt(num) >= 0.5) return parseInt(num + 1);
+  return parseInt(num);
+});
+
 describe('getGraphData', () => {
   it('should return an array with a single object', () => {
-    Math.round = jest.fn(() => 56)
     const result = cleaner.getGraphData(mockData.mockHours);
     expect(result).toEqual(mockData.expectedHours);
   });
@@ -11,10 +15,6 @@ describe('getGraphData', () => {
 
 describe('getWindDirection', () => {
   it('should return 1 of 16 directions given a number between 0 and 360', () => {
-    Math.round = jest.fn((num) => {
-      if (num - parseInt(num) >= 0.5) return parseInt(num + 1);
-      return parseInt(num);
-    });
     expect(cleaner.getWindDirection(0)).toEqual('N');
     expect(cleaner.getWindDirection(23)).toEqual('NNE');
     expect(cleaner.getWindDirection(46)).toEqual('NE');
@@ -44,7 +44,6 @@ describe('getWeekForecast', () => {
 
 describe('cleanData', () => {
   it('should return an object with the correct properties', () => {
-    Math.round = jest.fn(num => num);
     const result = cleaner.cleanData(mockData.mockWeather);
     expect(result).toEqual(mockData.expectedWeather);
   });

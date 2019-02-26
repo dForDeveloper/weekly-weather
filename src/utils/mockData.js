@@ -1,7 +1,7 @@
 export const mockHours = [
   {
     time: 1551132776,
-    temperate: 55.55
+    temperature: 55.55
   }
 ];
 
@@ -197,36 +197,36 @@ export const expectedWeather = {
       ]
     },
   ],
-  maxTemp: 42.32,
-  minTemp: 18.64,
+  maxTemp: 42,
+  minTemp: 19,
   today: {
     day: 'Sat',
-    feelsLike: 21.27,
-    high: 36.58,
+    feelsLike: 21,
+    high: 37,
     humidity: '66%',
     icon: 'snow',
-    low: 18.64,
+    low: 19,
     precipProbability: '51%',
     precipType: 'snow',
     summary: 'Partly Cloudy',
     sunrise: '6:56 AM',
     sunset: '5:17 PM',
-    temperature: 30.54,
-    wind: '2.78 mph undefined',
+    temperature: 31,
+    wind: '3 mph WNW',
   },
   week:  [
     {
       day: 'Sun',
-      high: 42.32,
+      high: 42,
       humidity: '51%',
       icon: 'partly-cloudy-day',
-      low: 22.97,
+      low: 23,
       precipProbability: '4%',
       precipType: 'snow',
       summary: 'Partly cloudy until afternoon.',
       sunrise: '6:31 AM',
       sunset: '5:24 PM',
-      wind: '4.73 mph undefined',
+      wind: '5 mph SSE',
     },
   ],
 }
