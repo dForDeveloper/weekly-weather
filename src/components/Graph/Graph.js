@@ -31,7 +31,7 @@ export const Graph = ({ data, low, high }) => {
               "orient": "bottom",
               "tickSize": 5,
               "tickPadding": 5,
-              "tickRotation": -45,
+              "tickRotation": -60,
               "legendOffset": 36,
               "legendPosition": "middle",
               "tickValues": 0
@@ -57,7 +57,6 @@ export const Graph = ({ data, low, high }) => {
           animate={true}
           motionStiffness={90}
           motionDamping={15}
-          // tooltipFormat={value => value + '°F'}
           isInteractive={false}
       />
     </div>
