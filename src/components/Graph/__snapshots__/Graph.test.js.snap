@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Graph should match the snapshot 1`] = `
+<div
+  className="Graph"
+>
+  <ResponsiveLine
+    animate={true}
+    axisBottom={
+      Object {
+        "legendOffset": 36,
+        "legendPosition": "middle",
+        "orient": "bottom",
+        "tickPadding": 5,
+        "tickRotation": -60,
+        "tickSize": 5,
+        "tickValues": 0,
+      }
+    }
+    axisLeft={
+      Object {
+        "legend": "Fahrenheit",
+        "legendOffset": -32,
+        "legendPosition": "middle",
+        "orient": "left",
+        "tickPadding": 5,
+        "tickRotation": 0,
+        "tickSize": 5,
+      }
+    }
+    axisRight={null}
+    axisTop={null}
+    colors={
+      Array [
+        "blue",
+      ]
+    }
+    curve="monotoneX"
+    data={
+      Array [
+        Object {
+          "data": Array [
+            Object {
+              "x": "7:00 PM",
+              "y": 37,
+            },
+            Object {
+              "x": "8:00 PM",
+              "y": 33,
+            },
+            Object {
+              "x": "9:00 PM",
+              "y": 31,
+            },
+            Object {
+              "x": "10:00 PM",
+              "y": 29,
+            },
+          ],
+          "id": "",
+        },
+      ]
+    }
+    dotBorderColor="#ffffff"
+    dotBorderWidth={2}
+    dotColor="inherit:darker(0.3)"
+    dotLabel="y"
+    dotLabelYOffset={-12}
+    dotSize={10}
+    enableDotLabel={true}
+    enableGridX={false}
+    isInteractive={false}
+    margin={
+      Object {
+        "bottom": 64,
+        "left": 48,
+        "right": 16,
+        "top": 50,
+      }
+    }
+    motionDamping={15}
+    motionStiffness={90}
+    xScale={
+      Object {
+        "type": "point",
+      }
+    }
+    yScale={
+      Object {
+        "max": 57,
+        "min": 0,
+        "stacked": true,
+        "type": "linear",
+      }
+    }
+  />
+</div>
+`;

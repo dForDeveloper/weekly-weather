@@ -1,10 +1,10 @@
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line';
+import PropTypes from 'prop-types';
 
 export const Graph = ({ data, low, high }) => {
   const yMin = Math.min(0, low);
   const yMax = high + 20;
-
   return (
     <div className='Graph'>
       <ResponsiveLine
@@ -61,4 +61,10 @@ export const Graph = ({ data, low, high }) => {
       />
     </div>
   )
+}
+
+Graph.propTypes = {
+  data: PropTypes.array,
+  low: PropTypes.number,
+  high: PropTypes.number,
 }
