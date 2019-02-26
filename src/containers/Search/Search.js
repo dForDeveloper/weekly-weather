@@ -24,11 +24,12 @@ export class Search extends Component {
 
   render() {
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className='Search'>
         <input
           value={this.state.query}
           onChange={this.handleChange}
           placeholder='search for a city'
+          className='Search--input'
         />
       </form>
     );
