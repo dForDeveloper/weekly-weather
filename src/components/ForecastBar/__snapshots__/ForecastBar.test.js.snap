@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForecastBar should match the snapshow when is expanded is false 1`] = `
+<div>
+  <div
+    className="ForecastBar"
+  >
+    <span
+      className="snow small-icon"
+    />
+    <span
+      className="day"
+    >
+      Sat
+    </span>
+    <span
+      className="bar-container"
+    >
+      <span
+        className="bar"
+        style={
+          Object {
+            "marginLeft": "0%",
+            "width": "78.26086956521739%",
+          }
+        }
+      >
+        <span
+          className="low"
+        >
+          19
+          °
+        </span>
+        <span
+          className="high"
+        >
+          37
+          °
+        </span>
+      </span>
+    </span>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      +
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ForecastBar should match the snapshow when is expanded is true 1`] = `
+<div>
+  <div
+    className="ForecastBar"
+  >
+    <span
+      className="snow small-icon"
+    />
+    <span
+      className="day"
+    >
+      Sat
+    </span>
+    <span
+      className="bar-container"
+    >
+      <span
+        className="bar"
+        style={
+          Object {
+            "marginLeft": "0%",
+            "width": "78.26086956521739%",
+          }
+        }
+      >
+        <span
+          className="low"
+        >
+          19
+          °
+        </span>
+        <span
+          className="high"
+        >
+          37
+          °
+        </span>
+      </span>
+    </span>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      -
+    </button>
+  </div>
+  <div>
+    <h3>
+      Snow (&lt; 1 in.) until afternoon.
+    </h3>
+    <p>
+      Low: 
+      19
+      °
+    </p>
+    <p>
+      High: 
+      37
+      °
+    </p>
+    <p>
+      Sunrise: 
+      6:56 AM
+    </p>
+    <p>
+      Sunset: 
+      5:17 PM
+    </p>
+    <p>
+      Chance of 
+      snow
+      : 
+      51%
+    </p>
+    <p>
+      Wind: 
+      3 mph WNW
+    </p>
+    <p>
+      Humidity: 
+      66%
+    </p>
+  </div>
+</div>
+`;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class ForecastBar extends Component {
   constructor() {
@@ -58,4 +59,20 @@ export class ForecastBar extends Component {
       </div>
     );
   }
+}
+
+ForecastBar.propTypes = {
+  min: PropTypes.number,
+  max: PropTypes.number,
+  day: PropTypes.string,
+  summary: PropTypes.string,
+  icon: PropTypes.string,
+  precipType: PropTypes.string,
+  precipProbability: PropTypes.string,
+  low: PropTypes.number,
+  high: PropTypes.number,
+  sunrise: PropTypes.string,
+  sunset: PropTypes.string,
+  wind: PropTypes.string,
+  humidity: PropTypes.string
 }
