@@ -1,6 +1,7 @@
 import React from 'react';
 import { ForecastBar } from '../ForecastBar/ForecastBar';
 import { Graph } from '../Graph/Graph';
+import PropTypes from 'prop-types';
 
 const WeatherContainer = ({ city, weather }) => {
   const { today, week, minTemp, maxTemp, graphData } = weather;
@@ -42,3 +43,8 @@ const WeatherContainer = ({ city, weather }) => {
 }
 
 export default WeatherContainer;
+
+WeatherContainer.propTypes = {
+  city: PropTypes.string,
+  weather: PropTypes.object
+}
