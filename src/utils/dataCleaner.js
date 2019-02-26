@@ -76,13 +76,10 @@ export const getWindDirection = (windBearing) => {
 export const getGraphData = (hourData) => {
   const data = hourData.map(hour => {
     return {
-      "x": (new Date(hour.time * 1000))
+      x: (new Date(hour.time * 1000))
         .toLocaleTimeString().replace(/:\d+/, ''),
-      "y": Math.round(hour.temperature)
+      y: Math.round(hour.temperature)
     }
   });
-  return [{
-    "id": "",
-    "data": data
-  }];
+  return [{ id: "", data }];
 }
