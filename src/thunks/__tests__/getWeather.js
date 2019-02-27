@@ -14,7 +14,7 @@ describe('getWeather', () => {
   helper.cleanData = jest.fn(() => mockWeather);
 
   it('should call fetchData with the correct param', async () => {
-    const url = `http://localhost:3001/api/v1/weather/${lat}/${lon}`;
+    const url = `https://weekly-weather.herokuapp.com/api/v1/weather/${lat}/${lon}`;
     await thunk(mockDispatch);
     expect(api.fetchData).toHaveBeenCalledWith(url);
   });

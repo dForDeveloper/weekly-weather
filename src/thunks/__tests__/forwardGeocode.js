@@ -24,7 +24,7 @@ describe('forwardGeocode', () => {
   });
 
   it('should call fetchData with the correct param', async () => {
-    const url = 'http://localhost:3001/api/v1/forwardgeocode/Las+Vegas%2C+NV';
+    const url = 'https://weekly-weather.herokuapp.com/api/v1/forwardgeocode/Las+Vegas%2C+NV';
     await thunk(mockDispatch);
     expect(api.fetchData).toHaveBeenCalledWith(url);
   });

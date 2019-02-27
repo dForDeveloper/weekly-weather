@@ -13,7 +13,7 @@ describe('getUserIP', () => {
   const mockCoordinates = { latitude, longitude };
   const mockDispatch = jest.fn();
   const thunk = getUserIP(mockCoordinates);
-  api.fetchData = jest.fn(() => ({ lat: latitude, lon: longitude }));
+  api.fetchData = jest.fn(() => ({ latitude, longitude }));
 
   it('should call dispatch with toggleLoading as true', async () => {
     const expected = toggleLoading(true);
@@ -22,7 +22,7 @@ describe('getUserIP', () => {
   });
 
   it('should call fetchData with the correct param', async () => {
-    const url = 'http://ip-api.com/json';
+    const url = 'https://weekly-weather.herokuapp.com/api/v1/ip';
     await thunk(mockDispatch);
     expect(api.fetchData).toHaveBeenCalledWith(url);
   });
