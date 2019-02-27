@@ -58,6 +58,9 @@ export class App extends Component {
             {error && <h2 className="App--h2">No results found</h2>}
           </div>}
         {isLoading && <h2 className="App--h2">Loading...</h2>}
+        <div className="App--div--darksky">
+          <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+        </div>
       </div>
     );
   }

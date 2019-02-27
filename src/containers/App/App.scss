@@ -1,15 +1,27 @@
 .App--header {
   height: 80px;
   box-shadow: $heavy-shadow;
+  background-color: $blue;
 }
 
 .h1 {
   font-size: 32px;
   margin: 0;
   padding: 24px 0 24px 24px;
+  color: #fff;
+  font-weight: 300;
 }
 
 .App--h2 {
   margin-top: 16px;
   text-align: center;
+}
+
+.App--div--darksky {
+  text-align: center;
+  margin: 64px 0 32px;
+
+  a {
+    color: $blue;
+  }
 }

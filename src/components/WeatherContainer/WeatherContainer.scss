@@ -93,3 +93,8 @@
 .section {
   @extend .WeatherContainer--width;
 }
+
+.section--h3 {
+  text-align: center;
+  margin: 16px;
+}

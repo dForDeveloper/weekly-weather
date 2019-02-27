@@ -47,6 +47,7 @@ const WeatherContainer = ({ city, weather }) => {
       </article>
       <Graph data={graphData} low={low} high={high} />
       <section className="section">
+        <h3 className="section--h3">7 Day Forecast</h3>
         {week.map((day, index) => {
           return (
             <ForecastBar key={index} min={minTemp} max={maxTemp} {...day} />
