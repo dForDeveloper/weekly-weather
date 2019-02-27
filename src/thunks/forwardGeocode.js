@@ -7,7 +7,7 @@ export const forwardGeocode = (userQuery) => {
     dispatch(toggleLoading(true));
     try {
       const query = userQuery.replace(/\s/g, '+').replace(/,/g, '%2C');
-      const url = `http://weekly-weather.herokuapp.com/api/v1/forwardgeocode/${query}`;
+      const url = `https://weekly-weather.herokuapp.com/api/v1/forwardgeocode/${query}`;
       const geocodeData = await fetchData(url);
       const { lat: latitude, lng: longitude } = geocodeData[0].geometry;
       const { city, state_code } = geocodeData[0].components;
