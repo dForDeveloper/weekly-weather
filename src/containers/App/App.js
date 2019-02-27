@@ -4,11 +4,25 @@ import { withRouter, Redirect } from 'react-router-dom';
 import Search from '../Search/Search';
 import WeatherContainer from '../../components/WeatherContainer/WeatherContainer';
 import { getUserIP } from '../../thunks/getUserIP';
+import { getWeatherByGeolocation } from '../../thunks/getWeatherByGeolocation';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
   componentDidMount() {
-    this.props.getUserIP();
+    this.getGeolocation();
+  }
+
+  getGeolocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = await position.coords;
+        this.props.getWeatherByGeolocation({ latitude, longitude });
+      },
+        () => this.props.getUserIP()
+      );
+    } else {
+      this.props.getUserIP();
+    }
   }
 
   render() {
@@ -43,7 +57,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getUserIP: () => dispatch(getUserIP())
+  getUserIP: () => dispatch(getUserIP()),
+  getWeatherByGeolocation: ({ latitude, longitude }) => dispatch(getWeatherByGeolocation({ latitude, longitude }))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
@@ -54,4 +69,5 @@ App.propTypes = {
   error: PropTypes.string,
   isLoading: PropTypes.bool,
   getUserIP: PropTypes.func,
+  getWeatherByGeolocation: PropTypes.func,
 }
