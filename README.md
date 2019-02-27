@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [Weekly Weather](https://dfordeveloper.github.io/weekly-weather/)
 
-## Available Scripts
+**Weekly Weather** is a React app that provides you with your weather forecast using data from the Dark Sky and OpenCage Geocoding APIs. You can search for any US city and see the current weather conditions, a graph of the temperature for the next 24 hours, and the forecast for the upcoming week.
 
-In the project directory, you can run:
+## How to Use the App:
+  ### As a User:
+  - Go to [the website](https://dfordeveloper.github.io/weekly-weather/).
+  - You should be automatically redirected to the page for your city where you will see the current weather conditions.
+  - Check the graph to see how the temperature will rise and fall over the course of the next 24 hours.
+  - Scroll down to see the low and high temperatures for the next seven days.
+  - Click on the button for a given day to see more information about that day's weather.
+  - Head back to the top of the page to search for any city in the US.
+  
+  ### As a Contributor: 
+  - Fork the repo
+  - Open your terminal
+  - `cd` to where you want the repo directory to be created
+  - Clone your fork down to your machine either
+    - with SSH: `git clone git@github.com:`*yourusername*`/weekly-weather.git`
+    - or with HTTPS: `git clone https://github.com/`*yourusername*`/weekly-weather.git`
+  - `cd weekly-weather`
+  - `npm install`
+  - `git push` any changes up to your fork
+  - Make pull requests from your fork to the original repo
 
-### `npm start`
+## Preview of the App
+![Weekly Weather Preview](https://user-images.githubusercontent.com/41239540/53468632-41424900-3a18-11e9-959b-db4de4232197.png)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Technologies Used:
+  - React
+  - Router, Redux, and Redux Thunks
+  - Jest and Enzyme
+  - Node and Express
+  - Dark Sky API
+  - OpenCage Geocoding API
+  - Sass
+  - Nivo
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Contributors:
+- Jeo D [@dForDeveloper](https://github.com/dForDeveloper)
