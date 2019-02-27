@@ -113,6 +113,11 @@ exports[`WeatherContainer should match the snapshot 1`] = `
   <section
     className="section"
   >
+    <h3
+      className="section--h3"
+    >
+      7 Day Forecast
+    </h3>
     <ForecastBar
       day="Sun"
       high={42}

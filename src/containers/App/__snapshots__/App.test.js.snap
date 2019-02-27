@@ -78,6 +78,15 @@ exports[`App should match the snapshot when isLoading is false 1`] = `
       }
     />
   </div>
+  <div
+    className="App--div--darksky"
+  >
+    <a
+      href="https://darksky.net/poweredby/"
+    >
+      Powered by Dark Sky
+    </a>
+  </div>
 </div>
 `;
 
@@ -96,10 +105,19 @@ exports[`App should match the snapshot when isLoading is true 1`] = `
   </header>
   <Connect(Search) />
   <h2
-    className="h2--loading"
+    className="App--h2"
   >
     Loading...
   </h2>
+  <div
+    className="App--div--darksky"
+  >
+    <a
+      href="https://darksky.net/poweredby/"
+    >
+      Powered by Dark Sky
+    </a>
+  </div>
 </div>
 `;
 
@@ -119,10 +137,19 @@ exports[`App should match the snapshot when there is an error 1`] = `
   <Connect(Search) />
   <div>
     <h2
-      className="h2--error"
+      className="App--h2"
     >
       No results found
     </h2>
+  </div>
+  <div
+    className="App--div--darksky"
+  >
+    <a
+      href="https://darksky.net/poweredby/"
+    >
+      Powered by Dark Sky
+    </a>
   </div>
 </div>
 `;
@@ -208,6 +235,15 @@ exports[`App should redirect when pathname does not match the city 1`] = `
         }
       }
     />
+  </div>
+  <div
+    className="App--div--darksky"
+  >
+    <a
+      href="https://darksky.net/poweredby/"
+    >
+      Powered by Dark Sky
+    </a>
   </div>
 </div>
 `;
