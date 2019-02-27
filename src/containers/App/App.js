@@ -11,7 +11,7 @@ export class App extends Component {
   constructor() {
     super();
     this.state = {
-      userDidConsent: true
+      locationGranted: true
     }
   }
 
@@ -26,7 +26,7 @@ export class App extends Component {
         this.props.getWeatherByGeolocation({ latitude, longitude });
       },
         () => {
-          this.setState({ userDidConsent: false }, () => this.props.getUserIP())
+          this.setState({ locationGranted: false }, () => this.props.getUserIP())
         }
       );
     } else {
@@ -50,7 +50,7 @@ export class App extends Component {
             {shouldRedirect && <Redirect to={redirectPath} />}
             {weather.today && !error &&
               <WeatherContainer city={city} weather={weather} />}
-            {!this.state.userDidConsent && 
+            {!this.state.locationGranted && !userLocation.city && 
               <h2 className="App--h2">
                 Share your location for automatic redirection to your city
               </h2>
