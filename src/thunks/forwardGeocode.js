@@ -10,8 +10,9 @@ export const forwardGeocode = (userQuery) => {
       const url = `https://weekly-weather.herokuapp.com/api/v1/forwardgeocode/${query}`;
       const geocodeData = await fetchData(url);
       const { lat: latitude, lng: longitude } = geocodeData[0].geometry;
-      const { city, state_code } = geocodeData[0].components;
-      dispatch(setCity(`${city}, ${state_code}`));
+      const { city, locality, state_district, state_code } = geocodeData[0].components;
+      const cityName = city || locality || state_district;
+      dispatch(setCity(`${cityName}, ${state_code}`));
       dispatch(setCoordinates({ latitude, longitude }));
       dispatch(getWeather({ latitude, longitude }));
       dispatch(setError(''));
