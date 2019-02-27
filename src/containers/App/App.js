@@ -8,6 +8,13 @@ import { getWeatherByGeolocation } from '../../thunks/getWeatherByGeolocation';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userDidConsent: true
+    }
+  }
+
   componentDidMount() {
     this.getGeolocation();
   }
@@ -18,7 +25,9 @@ export class App extends Component {
         const { latitude, longitude } = await position.coords;
         this.props.getWeatherByGeolocation({ latitude, longitude });
       },
-        () => this.props.getUserIP()
+        () => {
+          this.setState({ userDidConsent: false }, () => this.props.getUserIP())
+        }
       );
     } else {
       this.props.getUserIP();
@@ -41,6 +50,11 @@ export class App extends Component {
             {shouldRedirect && <Redirect to={redirectPath} />}
             {weather.today && !error &&
               <WeatherContainer city={city} weather={weather} />}
+            {!this.state.userDidConsent && 
+              <h2 className="h2--error">
+                Share your location for automatic redirect to your city
+              </h2>
+            }
             {error && <h2 className="h2--error">No results found</h2>}
           </div>}
         {isLoading && <h2 className="h2--loading">Loading...</h2>}
