@@ -7,8 +7,8 @@ export const getUserIP = () => {
   return async (dispatch) => {
     dispatch(toggleLoading(true));
     try{
-      const url = 'http://ip-api.com/json';
-      const { lat: latitude, lon: longitude } = await fetchData(url);
+      const url = 'https://weekly-weather.herokuapp.com/api/v1/ip';
+      const { latitude, longitude } = await fetchData(url);
       dispatch(setCoordinates({ latitude, longitude }));
       dispatch(reverseGeocode({ latitude, longitude }));
       dispatch(getWeather({ latitude, longitude }));
