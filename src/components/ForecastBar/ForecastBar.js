@@ -50,7 +50,7 @@ export class ForecastBar extends Component {
         {isExpanded &&
           <article className="article article--expanded">
             <header className='article--header'>
-              <h2 className="h2"><div className={icon}></div>{summary}</h2>
+              <h2 className="article--h2"><div className={icon}></div>{summary}</h2>
               <span>Chance of {precipType}: {precipProbability}</span>
             </header>
             <div className="article--div">

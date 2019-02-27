@@ -51,13 +51,13 @@ export class App extends Component {
             {weather.today && !error &&
               <WeatherContainer city={city} weather={weather} />}
             {!this.state.userDidConsent && 
-              <h2 className="h2--error">
-                Share your location for automatic redirect to your city
+              <h2 className="App--h2">
+                Share your location for automatic redirection to your city
               </h2>
             }
-            {error && <h2 className="h2--error">No results found</h2>}
+            {error && <h2 className="App--h2">No results found</h2>}
           </div>}
-        {isLoading && <h2 className="h2--loading">Loading...</h2>}
+        {isLoading && <h2 className="App--h2">Loading...</h2>}
       </div>
     );
   }
