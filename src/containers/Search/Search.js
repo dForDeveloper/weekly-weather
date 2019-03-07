@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { forwardGeocode } from '../../thunks/forwardGeocode';
 import PropTypes from 'prop-types';
 
@@ -17,8 +18,9 @@ export class Search extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    let { query } = this.state;
-    this.props.forwardGeocode(query);
+    const { query } = this.state;
+    const { history } = this.props;
+    this.props.forwardGeocode(query, history);
     this.setState({ query: '' });
   }
 
@@ -37,10 +39,10 @@ export class Search extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  forwardGeocode: (query) => dispatch(forwardGeocode(query))
+  forwardGeocode: (query, history) => dispatch(forwardGeocode(query, history))
 });
 
-export default connect(null, mapDispatchToProps)(Search);
+export default withRouter(connect(null, mapDispatchToProps)(Search));
 
 Search.propTypes = {
   forwardGeocode: PropTypes.func

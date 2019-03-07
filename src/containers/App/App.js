@@ -1,44 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Search from '../Search/Search';
 import WeatherContainer from '../../components/WeatherContainer/WeatherContainer';
 import { getUserIP } from '../../thunks/getUserIP';
-import { getWeatherByGeolocation } from '../../thunks/getWeatherByGeolocation';
+import { getGeolocation } from '../../thunks/getGeolocation';
+import { toggleLoading } from '../../actions';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      locationGranted: true
-    }
-  }
-
   componentDidMount() {
-    this.getGeolocation();
+    this.getUserLocation();
   }
 
-  getGeolocation = () => {
+  getUserLocation = async () => {
+    const { history, getUserIP, getGeolocation, toggleLoading } = this.props;
+    toggleLoading(true);
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = await position.coords;
-        this.props.getWeatherByGeolocation({ latitude, longitude });
-      },
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = await position.coords;
+          getGeolocation({ latitude, longitude }, history);
+        },
         () => {
-          this.setState({ locationGranted: false }, () => this.props.getUserIP())
+          this.setState(
+            { locationGranted: false },
+            () => getUserIP(history)
+          );
         }
       );
     } else {
-      this.props.getUserIP();
+      getUserIP(history);
     }
   }
 
   render() {
-    const { userLocation, weather, location, error, isLoading } = this.props;
+    const { userLocation, weather, error, isLoading } = this.props;
     const { city } = userLocation;
-    const redirectPath = city.replace(/\s/g, '');
-    const shouldRedirect = !location.pathname.includes(redirectPath) && city;
     return (
       <div className="App">
         <header className="App--header">
@@ -47,14 +45,8 @@ export class App extends Component {
         <Search />
         {!isLoading && 
           <div>
-            {shouldRedirect && <Redirect to={redirectPath} />}
             {weather.today && !error &&
               <WeatherContainer city={city} weather={weather} />}
-            {!this.state.locationGranted && !userLocation.city && 
-              <h2 className="App--h2">
-                Share your location for automatic redirection to your city
-              </h2>
-            }
             {error && <h2 className="App--h2">No results found</h2>}
           </div>}
         {isLoading && <h2 className="App--h2">Loading...</h2>}
@@ -74,8 +66,11 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getUserIP: () => dispatch(getUserIP()),
-  getWeatherByGeolocation: ({ latitude, longitude }) => dispatch(getWeatherByGeolocation({ latitude, longitude }))
+  getUserIP: (history) => dispatch(getUserIP(history)),
+  getGeolocation: ({ latitude, longitude }, history) => {
+    dispatch(getGeolocation({ latitude, longitude }, history))
+  },
+  toggleLoading: (bool) => dispatch(toggleLoading(bool))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
@@ -86,5 +81,6 @@ App.propTypes = {
   error: PropTypes.string,
   isLoading: PropTypes.bool,
   getUserIP: PropTypes.func,
-  getWeatherByGeolocation: PropTypes.func,
+  getGeolocation: PropTypes.func,
+  toggleLoading: PropTypes.func
 }

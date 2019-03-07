@@ -2,7 +2,7 @@ import { fetchData } from '../utils/api';
 import { setCoordinates, setCity, setError, toggleLoading } from '../actions';
 import { getWeather } from '../thunks/getWeather';
 
-export const forwardGeocode = (userQuery) => {
+export const forwardGeocode = (userQuery, history) => {
   return async (dispatch) => {
     dispatch(toggleLoading(true));
     try {
@@ -14,7 +14,8 @@ export const forwardGeocode = (userQuery) => {
       const cityName = city || locality || state_district;
       dispatch(setCity(`${cityName}, ${state_code}`));
       dispatch(setCoordinates({ latitude, longitude }));
-      dispatch(getWeather({ latitude, longitude }));
+      await dispatch(getWeather({ latitude, longitude }));
+      history.push('/' + encodeURI(`${state_code}/${cityName}`));
       dispatch(setError(''));
     } catch (error) {
       dispatch(setError(error.message))
