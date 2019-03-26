@@ -23,3 +23,13 @@ export const toggleLoading = (bool) => ({
   type: 'TOGGLE_LOADING',
   isLoading: bool
 });
+
+export const setUserTimezone = (offset) => ({
+  type: 'SET_USER_TIMEZONE',
+  offset
+});
+
+export const setCityTimezone = (offset) => ({
+  type: 'SET_CITY_TIMEZONE',
+  offset
+});
