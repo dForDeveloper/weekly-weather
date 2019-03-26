@@ -1,5 +1,5 @@
 import { fetchData } from '../utils/api';
-import { setCoordinates, setCity, setError, toggleLoading } from '../actions';
+import { setCoordinates, setCity, setError, toggleLoading, setCityTimezone } from '../actions';
 import { getWeather } from '../thunks/getWeather';
 
 export const forwardGeocode = (userQuery, history) => {
@@ -9,6 +9,8 @@ export const forwardGeocode = (userQuery, history) => {
       const query = userQuery.replace(/\s/g, '+').replace(/,/g, '%2C');
       const url = `https://weekly-weather.herokuapp.com/api/v1/forwardgeocode/${query}`;
       const geocodeData = await fetchData(url);
+      const { offset_sec } = geocodeData[0].annotations.timezone;
+      dispatch(setCityTimezone(offset_sec));
       const { lat: latitude, lng: longitude } = geocodeData[0].geometry;
       const { city, locality, state_district, state_code } = geocodeData[0].components;
       const cityName = city || locality || state_district;
