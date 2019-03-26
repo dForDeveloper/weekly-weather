@@ -41,10 +41,8 @@ export const getWeekForecast = (data) => {
       day: (new Date(time * 1000).toDateString().slice(0,3)),
       low: Math.round(temperatureLow),
       high: Math.round(temperatureHigh),
-      sunrise: (new Date(sunriseTime * 1000))
-        .toLocaleTimeString('en-US').replace(/:\d+/, ''),
-      sunset: (new Date(sunsetTime * 1000))
-        .toLocaleTimeString('en-US').replace(/:\d+/, ''),
+      sunrise: sunriseTime,
+      sunset: sunsetTime,
       wind: Math.round(windSpeed) + ' mph ' + getWindDirection(windBearing),
       humidity: Math.round(humidity * 100) + '%'
     }

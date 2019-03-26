@@ -26,12 +26,17 @@ export class ForecastBar extends Component {
       sunrise,
       sunset,
       wind,
-      humidity
+      humidity,
+      timezone
     } = this.props;
     const barStyle = {
       width: 100 * (high - low) / (max - min) + '%',
       marginLeft: 100 * (low - min) / (max - min) + '%'
     }
+    const cleanedSunrise = (new Date((sunrise - (timezone.userOffset - timezone.cityOffset)) * 1000))
+      .toLocaleTimeString('en-US').replace(/:\d+/, '');
+    const cleanedSunset = (new Date((sunset - (timezone.userOffset - timezone.cityOffset)) * 1000))
+      .toLocaleTimeString('en-US').replace(/:\d+/, '');
     return (
       <div className="ForecastBar">
         <div className={'ForecastBar--bar-container'}>
@@ -55,10 +60,10 @@ export class ForecastBar extends Component {
             </header>
             <div className="article--div">
               <p className="p">Low: {low}°</p>
-              <p className="p">Sunrise: {sunrise}</p>
+              <p className="p">Sunrise: {cleanedSunrise}</p>
               <p className="p">Wind: {wind}</p>
               <p className="p">High: {high}°</p>
-              <p className="p">Sunset: {sunset}</p>
+              <p className="p">Sunset: {cleanedSunset}</p>
               <p className="p">Humidity: {humidity}</p>
             </div>
           </article>
@@ -81,5 +86,6 @@ ForecastBar.propTypes = {
   sunrise: PropTypes.string,
   sunset: PropTypes.string,
   wind: PropTypes.string,
-  humidity: PropTypes.string
+  humidity: PropTypes.string,
+  timezone: PropTypes.object
 }

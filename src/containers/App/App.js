@@ -35,7 +35,7 @@ export class App extends Component {
   }
 
   render() {
-    const { userLocation, weather, error, isLoading } = this.props;
+    const { userLocation, weather, error, isLoading, timezone } = this.props;
     const { city } = userLocation;
     return (
       <div className="App">
@@ -46,7 +46,7 @@ export class App extends Component {
         {!isLoading && 
           <div>
             {weather.today && !error &&
-              <WeatherContainer city={city} weather={weather} />}
+              <WeatherContainer city={city} weather={weather} timezone={timezone} />}
             {error && <h2 className="App--h2">No results found</h2>}
           </div>}
         {isLoading && <h2 className="App--h2">Loading...</h2>}
@@ -62,7 +62,8 @@ export const mapStateToProps = (state) => ({
   userLocation: state.location,
   weather: state.weather,
   error: state.error,
-  isLoading: state.isLoading
+  isLoading: state.isLoading,
+  timezone: state.timezone
 });
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -80,6 +81,7 @@ App.propTypes = {
   weather: PropTypes.object,
   error: PropTypes.string,
   isLoading: PropTypes.bool,
+  timezone: PropTypes.object,
   getUserIP: PropTypes.func,
   getGeolocation: PropTypes.func,
   toggleLoading: PropTypes.func

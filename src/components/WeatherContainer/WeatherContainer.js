@@ -3,7 +3,7 @@ import { ForecastBar } from '../ForecastBar/ForecastBar';
 import { Graph } from '../Graph/Graph';
 import PropTypes from 'prop-types';
 
-const WeatherContainer = ({ city, weather }) => {
+const WeatherContainer = ({ city, weather, timezone }) => {
   const { today, week, minTemp, maxTemp, graphData } = weather;
   const {
     temperature,
@@ -19,7 +19,10 @@ const WeatherContainer = ({ city, weather }) => {
     wind,
     humidity
   } = today;
-
+  const cleanedSunrise = (new Date((sunrise - (timezone.userOffset - timezone.cityOffset)) * 1000))
+    .toLocaleTimeString('en-US').replace(/:\d+/, '');
+  const cleanedSunset = (new Date((sunset - (timezone.userOffset - timezone.cityOffset)) * 1000))
+    .toLocaleTimeString('en-US').replace(/:\d+/, '');
   return (
     <main className="WeatherContainer">
       <article className="article">
@@ -37,10 +40,10 @@ const WeatherContainer = ({ city, weather }) => {
         </header>
         <div className="article--div">
           <p className="p">Low: {low}°</p>
-          <p className="p">Sunrise: {sunrise}</p>
+          <p className="p">Sunrise: {cleanedSunrise}</p>
           <p className="p">Wind: {wind}</p>
           <p className="p">High: {high}°</p>
-          <p className="p">Sunset: {sunset}</p>
+          <p className="p">Sunset: {cleanedSunset}</p>
           <p className="p">Humidity: {humidity}</p>
 
         </div>
@@ -50,7 +53,7 @@ const WeatherContainer = ({ city, weather }) => {
         <h3 className="section--h3">7 Day Forecast</h3>
         {week.map((day, index) => {
           return (
-            <ForecastBar key={index} min={minTemp} max={maxTemp} {...day} />
+            <ForecastBar key={index} min={minTemp} max={maxTemp} {...day} timezone={timezone} />
           );
         })}
       </section>
@@ -62,5 +65,6 @@ export default WeatherContainer;
 
 WeatherContainer.propTypes = {
   city: PropTypes.string,
-  weather: PropTypes.object
+  weather: PropTypes.object,
+  timezone: PropTypes.object
 }
